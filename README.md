@@ -15,9 +15,9 @@ https://artvista-o532.onrender.com/
 
 ## Tech Stack
 
-**Client:** React, Redux, html, css, PostgreSQL
+**Client:** React.js, HTML, CSS
  
-**Server:** Node, Express, JS
+**Server:** Node.js, Express, Google Cloud Service, SQL
 
 **Testing**: Vitest, Jest
 
@@ -26,7 +26,7 @@ https://artvista-o532.onrender.com/
 Clone the project
 
 ```bash
-  git clone git@github.com:JamesThreadgill97/ArtVista.git
+  git clone github.com:olliebalabil/ArtVista.git
 ```
 
 Go to the project directory
@@ -34,8 +34,14 @@ Go to the project directory
 ```bash
   cd ArtVista
 ```
-
-## Running Server
+### Set up database
+In a .env file, add your DB_URL variable. You must also make adjustments for your Google Cloud Storage bucket.
+- Change the necessary, url's, keyFilenames, projectIds and bucketNames in server/models/Art.js and server/models/Users.js.
+- Create a service_account_key.json file in the server folder.
+```bash
+  npm run setup-db
+```
+### Running Server
 To run server, run the following command
 
 cd in the server folder:
@@ -45,7 +51,7 @@ cd in the server folder:
   npm run dev
 ```
 
-## Running Client
+### Running Client
 To run client, run the following command
 
 cd in the client folder:
@@ -55,7 +61,7 @@ cd in the client folder:
   npm run dev
 ```
 
-## Running Tests
+### Running Tests
 
 To run tests, run the following command
 

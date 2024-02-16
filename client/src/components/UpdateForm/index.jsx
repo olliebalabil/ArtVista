@@ -25,7 +25,7 @@ const UpdateForm = ({bio,setBio,email,setEmail, setShowEditForm,setUserInfo}) =>
           contact_url: email
         })
       }
-      const response = await fetch(`https://artvista-api.onrender.com/users/update/${localStorage.getItem("user_id")}`, options)
+      const response = await fetch(`http://localhost:3001/users/update/${localStorage.getItem("user_id")}`, options)
       const data = await response.json()
       if (response.status==200) {
         Swal.fire({

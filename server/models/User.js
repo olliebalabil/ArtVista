@@ -36,7 +36,7 @@ class User {
     // Upload the file to Cloud Storage
     let publicUrl
     if (file == null || file == undefined) {
-      publicUrl = 'https://storage.googleapis.com/artvista-images/default_profile.png'
+      publicUrl = 'https://storage.googleapis.com/artvista-image-storage/default_profile.png'
     } else {
       publicUrl = await this.uploadFileToStorage(file);
     }
@@ -57,9 +57,9 @@ class User {
     const { format } = require('util');
     const cloudStorage = new Storage({
       keyFilename: `./service_account_key.json`,
-      projectId: 'artvista-405109',
+      projectId: 'theta-office-414523',
     });
-    const bucketName = 'artvista-images';
+    const bucketName = 'artvista-image-storage';
     const bucket = cloudStorage.bucket(bucketName);
 
     const blob = bucket.file(file.originalname);

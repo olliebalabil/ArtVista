@@ -141,9 +141,9 @@ static async uploadAndCreate(data, file, tag_ids) {
   const { format } = require('util');
   const cloudStorage = new Storage({
     keyFilename: `./service_account_key.json`,
-    projectId: 'artvista-405109',
+    projectId: 'theta-office-414523',
   });
-  const bucketName = 'artvista-images';
+  const bucketName = 'artvista-image-storage';
   const bucket = cloudStorage.bucket(bucketName);
 
   const blob = bucket.file(file.originalname);
@@ -155,6 +155,7 @@ static async uploadAndCreate(data, file, tag_ids) {
     blobStream.on('finish', () => {
       const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
       resolve(publicUrl);
+      console.log(bucket.name,blob.name)
     });
     blobStream.end(file.buffer);
   });

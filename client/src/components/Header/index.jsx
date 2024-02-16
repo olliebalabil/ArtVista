@@ -35,7 +35,7 @@ export default function Header() {
     const fetchUserData = async () => {
       try {
         if (localStorage.getItem("user_id")) {
-          const response = await fetch(`https://artvista-api.onrender.com/users/userInfo/${localStorage.getItem("user_id")}`)
+          const response = await fetch(`http://localhost:3001/users/userInfo/${localStorage.getItem("user_id")}`)
           const data = await response.json()
           if (response.status == 200) {
             setUserData(data)

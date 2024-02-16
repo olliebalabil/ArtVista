@@ -26,8 +26,10 @@ export default function Register() {
       data: e.target.files[0],
 
     }
+
     setImage(img.preview)
     setFile(img)
+    console.log(img.data)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -43,7 +45,7 @@ export default function Register() {
             password: password1
           })
         }
-        const response = await fetch('https://artvista-frontend.onrender.com/users/login', options)
+        const response = await fetch('http://localhost:3001/users/login', options)
         const data = await response.json()
         localStorage.setItem("token", data.token)
         localStorage.setItem("user_id", data.user_id)
@@ -76,7 +78,7 @@ export default function Register() {
           method: "POST",
           body: formData
         }
-        const response = await fetch('https://artvista-frontend.onrender.com/users/register', options)
+        const response = await fetch('http://localhost:3001/users/register', options)
         const data = await response.json()
         if (response.status == 201) {
           console.log(data)
