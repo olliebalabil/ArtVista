@@ -7,7 +7,7 @@ export default function ProfileLink({ id }) {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/users/userInfo/${id}`)
+        const response = await fetch(`https://artvista-backend.onrender.com/users/userInfo/${id}`)
         const data = await response.json()
         if (response.status == 200) {
           setUserInfo(data)

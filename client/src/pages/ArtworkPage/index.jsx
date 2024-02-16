@@ -25,7 +25,7 @@ export default function ArtworkPage() {
   useEffect(() => {
     const fetchArtworks = async () => {
       try {
-        const response = await fetch("http://localhost:3001/art/")
+        const response = await fetch("https://artvista-backend.onrender.com/art/")
         const data = await response.json()
         if (response.status == 200) {
           let array = data;
@@ -47,7 +47,7 @@ export default function ArtworkPage() {
 
     const fetchSimilarArtworks = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/art/similar/${id}`)
+        const response = await fetch(`https://artvista-backend.onrender.com/art/similar/${id}`)
         const data = await response.json()
         if (response.status == 200) {
           
@@ -60,7 +60,7 @@ export default function ArtworkPage() {
 
     const fetchArtwork = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/art/${id}`)
+        const response = await fetch(`https://artvista-backend.onrender.com/art/${id}`)
         const data = await response.json()
         if (response.status == 200) {
           setArtwork(data)
@@ -72,7 +72,7 @@ export default function ArtworkPage() {
       }
     }
     const fetchComments = async () => {
-      const response = await fetch(`http://localhost:3001/art/${id}/comments`)
+      const response = await fetch(`https://artvista-backend.onrender.com/art/${id}/comments`)
       const data = await response.json()
       if (data == "no comments") {
         setComments([])
