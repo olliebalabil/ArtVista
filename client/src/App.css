@@ -737,22 +737,7 @@ header {
 .header-title-link:hover {
   text-decoration: none; /* Optional: Style for hover state */
 }
-.login-button {
-  /* Style your login button here */
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #373d20;
-  background-color: #88c093; /* Example color */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 5px;
-}
 
-.login-button:hover {
-  background-color: #373d20;
-  color: #fcfff8; /* Darker shade for hover effect */
-}
 
 .plus-and-profile {
   display: flex;
@@ -1079,3 +1064,47 @@ header {
 .edit-form button:hover {
   transform: scale(1.2);
 }
+
+/* mobile screen */
+@media only screen and (max-width: 767px) {
+  .login-button {
+    /* Style your login button here */
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #373d20;
+    background-color: #88c093; /* Example color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    width: ;
+  }
+  
+  .login-button:hover {
+    background-color: #373d20;
+    color: #fcfff8; /* Darker shade for hover effect */
+  }
+  .header-title {
+    display: none;
+  }
+}
+
+/* desktop screen */
+@media only screen and (min-width: 768px) {
+  .login-button {
+    /* Style your login button here */
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #373d20;
+    background-color: #88c093; /* Example color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .login-button:hover {
+    background-color: #373d20;
+    color: #fcfff8; /* Darker shade for hover effect */
+  }
+ }
