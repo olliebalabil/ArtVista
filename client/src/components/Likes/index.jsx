@@ -13,13 +13,13 @@ export default function Likes({ id, artwork }) {
     setLikeNum(artwork.likes);
     const checkIfLiked = async () => {
       try {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           const options = {
             headers: {
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             }
           };
-          const response = await fetch(`https://artvista-backend.onrender.com/art/like/${id}/${localStorage.getItem("user_id")}`, options);
+          const response = await fetch(`https://artvista-backend.onrender.com/art/like/${id}/${sessionStorage.getItem("user_id")}`, options);
           if (response.status === 200) {
             const likedData = await response.json();
             setLiked(likedData);
@@ -37,7 +37,7 @@ export default function Likes({ id, artwork }) {
 
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       if (liked) {
         setLikeImg("https://storage.googleapis.com/artvista-images/heart.png")
       } else {
@@ -54,15 +54,15 @@ export default function Likes({ id, artwork }) {
 
     const postLike = async () => {
       try {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           const options = {
             method: "POST",
             headers: {
               "content-type": "application/json",
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             }
           }
-          const response = await fetch(`https://artvista-backend.onrender.com/art/like/${id}/${localStorage.getItem("user_id")}`, options)
+          const response = await fetch(`https://artvista-backend.onrender.com/art/like/${id}/${sessionStorage.getItem("user_id")}`, options)
           const data = await response.json()
           if (response.status == 200) {
             console.log("posted")
@@ -75,15 +75,15 @@ export default function Likes({ id, artwork }) {
     }
     const destroyLike = async () => {
       try {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           const options = {
             method: "DELETE",
             headers: {
               "content-type": "application/json",
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             }
           }
-          const response = await fetch(`https://artvista-backend.onrender.com/art/like/${id}/${localStorage.getItem("user_id")}`, options)
+          const response = await fetch(`https://artvista-backend.onrender.com/art/like/${id}/${sessionStorage.getItem("user_id")}`, options)
           const data = await response.json()
           if (response.status == 200) {
             console.log("posted")
@@ -95,12 +95,12 @@ export default function Likes({ id, artwork }) {
     }
     const likeArtwork = async () => {
       try {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           const options = {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             },
             body: JSON.stringify({
               user_id: artwork.user_id,
@@ -122,12 +122,12 @@ export default function Likes({ id, artwork }) {
     }
     const unlikeArtwork = async () => {
       try {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           const options = {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             },
             body: JSON.stringify({
               user_id: artwork.user_id,
@@ -147,7 +147,7 @@ export default function Likes({ id, artwork }) {
         console.error({ error: err.message })
       }
     }
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       if (!liked) {
         likeArtwork()
         setLiked(true)

@@ -18,14 +18,14 @@ const UpdateForm = ({bio,setBio,email,setEmail, setShowEditForm,setUserInfo}) =>
         method: "PATCH",
         headers: {
           "content-type": "application/json",
-          "Authorization": localStorage.getItem("token")
+          "Authorization": sessionStorage.getItem("token")
         },
         body: JSON.stringify({
           bio: bio,
           contact_url: email
         })
       }
-      const response = await fetch(`https://artvista-backend.onrender.com/users/update/${localStorage.getItem("user_id")}`, options)
+      const response = await fetch(`https://artvista-backend.onrender.com/users/update/${sessionStorage.getItem("user_id")}`, options)
       const data = await response.json()
       if (response.status==200) {
         Swal.fire({

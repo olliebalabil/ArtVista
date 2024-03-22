@@ -24,8 +24,8 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user_id");
     setUsername("");
     setShowMenu(false);
     // navigate("/login")
@@ -34,8 +34,8 @@ export default function Header() {
   useEffect(()=>{ 
     const fetchUserData = async () => {
       try {
-        if (localStorage.getItem("user_id")) {
-          const response = await fetch(`https://artvista-backend.onrender.com/users/userInfo/${localStorage.getItem("user_id")}`)
+        if (sessionStorage.getItem("user_id")) {
+          const response = await fetch(`https://artvista-backend.onrender.com/users/userInfo/${sessionStorage.getItem("user_id")}`)
           const data = await response.json()
           if (response.status == 200) {
             setUserData(data)
@@ -47,7 +47,7 @@ export default function Header() {
       }
     }
     fetchUserData()
-  },[localStorage.getItem("user_id")])
+  },[sessionStorage.getItem("user_id")])
 
 
   const toggleMenu = () => {
@@ -78,7 +78,7 @@ export default function Header() {
           <h1 className="header-title">ArtVista</h1>
         </NavLink>
 
-        {localStorage.getItem("token") && localStorage.getItem("token") != "undefined" ? (
+        {sessionStorage.getItem("token") && sessionStorage.getItem("token") != "undefined" ? (
           <div className="plus-and-profile">
             <NavLink  to="/create"><img className="add-btn" src={plus_button} alt="add a post" /></NavLink>
           <div className="header-profile" onClick={toggleProfileDropdown}>
@@ -86,7 +86,7 @@ export default function Header() {
             {/* Dropdown menu */}
             {showProfileDropdown && (
               <div className="profile-dropdown">
-                <NavLink className="dropdown-item" to={`/profile/${localStorage.getItem("user_id")}`}>{`${userData.username}'s Profile`}</NavLink>
+                <NavLink className="dropdown-item" to={`/profile/${sessionStorage.getItem("user_id")}`}>{`${userData.username}'s Profile`}</NavLink>
                 <NavLink className="dropdown-item" onClick={handleLogout}>Logout</NavLink>
               </div>
             )}

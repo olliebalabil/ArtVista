@@ -69,7 +69,7 @@ export default function CreateArtwork() {
           const options = {
             method: "POST",
             headers: {
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             },
             body: formData
           }
@@ -90,7 +90,7 @@ export default function CreateArtwork() {
         }
       }
       let formData = new FormData()
-      formData.append("user_id", localStorage.getItem("user_id"))
+      formData.append("user_id", sessionStorage.getItem("user_id"))
       formData.append("file", file.data)
       formData.append("title", title)
       formData.append("description", description)

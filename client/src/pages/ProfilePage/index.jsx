@@ -57,7 +57,7 @@ export default function ProfilePage() {
       <div className="profile-page">
         <div className="profile-page-info">
           {
-            localStorage.getItem("user_id") == userInfo.id &&
+            sessionStorage.getItem("user_id") == userInfo.id &&
             <div className="edit-button">
               <img src={pen} alt="edit pen"  onClick={toggleShowEditForm}/>
             </div>

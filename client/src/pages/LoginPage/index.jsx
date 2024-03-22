@@ -34,8 +34,8 @@ export default function LoginPage() {
 
         const response = await fetch('https://artvista-backend.onrender.com/users/login', options)
         const data = await response.json()
-        localStorage.setItem("token", data.token)
-        localStorage.setItem("user_id",data.user_id)
+        sessionStorage.setItem("token", data.token)
+        sessionStorage.setItem("user_id",data.user_id)
         if (response.status == 200) {
           Swal.fire({
             title: "Login successful",

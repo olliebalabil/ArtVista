@@ -11,15 +11,15 @@ export default function CommentForm({ id, setComments }) {
     e.preventDefault()
     const postComment = async () => {
       try {
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           const options = {
             method: "POST",
             headers: {
               "Content-type": "application/json",
-              "Authorization": localStorage.getItem('token')
+              "Authorization": sessionStorage.getItem('token')
             },
             body: JSON.stringify({
-              user_id: localStorage.getItem('user_id'),
+              user_id: sessionStorage.getItem('user_id'),
               art_id: id,
               content: comment
             })
@@ -38,7 +38,7 @@ export default function CommentForm({ id, setComments }) {
         console.error({ error: err.message })
       }
     }
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       postComment()
     } else {
       Swal.fire({
